@@ -1,4 +1,4 @@
-package de.rampro.activitydiary.JacocoInstrument;
+package net.bible.android.activity.JacocoInstrument;
 
 import android.app.Instrumentation;
 import android.os.Bundle;

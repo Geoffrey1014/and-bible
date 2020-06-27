@@ -1,4 +1,4 @@
-package de.rampro.activitydiary.JacocoInstrument;
+package net.bible.android.activity.JacocoInstrument;
 
 public interface FinishListener {
     void dumpIntermediateCoverage(String filePath);
