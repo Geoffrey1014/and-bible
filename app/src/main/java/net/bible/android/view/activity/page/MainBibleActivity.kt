@@ -411,6 +411,7 @@ class MainBibleActivity : CustomTitlebarActivityBase(), VerseActionModeMediator.
                 drawerLayout.closeDrawers()
             } else {
                 drawerLayout.openDrawer(GravityCompat.START)
+                Log.i("Themis", "setupToolbarButtons: step 4: 点击左侧抽屉")
             }
         }
 

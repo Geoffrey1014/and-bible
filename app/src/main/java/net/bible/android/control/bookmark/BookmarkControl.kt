@@ -312,6 +312,12 @@ open class BookmarkControl @Inject constructor(
     fun deleteLabel(label: LabelDto?): Boolean {
         var bOk = false
         if (label?.id != null && LABEL_ALL != label && LABEL_UNLABELLED != label) {
+            if (label.name.equals("")){
+                Log.i("Themis", "deleteLabel: step 8: Warning: 删除了空label")
+            }
+            else{
+                Log.i("Themis", "deleteLabel: step 8: 删除了非空label")
+            }
             val db = BookmarkDBAdapter()
             bOk = try {
                 db.removeLabel(label)

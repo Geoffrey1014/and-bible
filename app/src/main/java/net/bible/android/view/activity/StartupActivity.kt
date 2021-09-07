@@ -113,10 +113,16 @@ open class StartupActivity : CustomTitlebarActivityBase() {
                 .setView(layoutInflater.inflate(R.layout.first_time_dialog, null))
                 .setInverseBackgroundForced(true) // prevents black text on black bkgnd on Android 2.3 (http://stackoverflow.com/questions/13266901/dark-text-on-dark-background-on-alertdialog-with-theme-sherlock-light)
                 .setCancelable(false)
-                .setPositiveButton(R.string.okay) { dialog, id -> doGotoDownloadActivity() }
+                .setPositiveButton(R.string.okay) {
+                        dialog, id -> doGotoDownloadActivity()
+                    Log.i("Themis", "askIfGotoDownloadActivity: step 1: click \"OK\" ")
+
+                }
                 .setNegativeButton(R.string.cancel) { dialog, id ->
                     this@StartupActivity.finish()
                     // ensure app exits to force Sword to reload or if a sdcard/jsword folder is created it may not be recognised
+                    Log.i("Themis", "askIfGotoDownloadActivity: step 1: Warning :click \"Cancel\" ")
+
                     System.exit(2)
                 }.create().show()
     }

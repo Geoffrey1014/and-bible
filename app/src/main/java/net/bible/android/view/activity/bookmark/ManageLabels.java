@@ -89,7 +89,7 @@ public class ManageLabels extends ListActivityBase {
      */
     public void onNewLabel(View v) {
     	Log.i(TAG, "New label clicked");
-
+		Log.i("Themis", "onNewLabel: step 6: click \"NEW LABEL\" ");
     	LabelDto newLabel = new LabelDto();
 		labelDialogs.createLabel(this, newLabel, new Callback() {
 			@Override
