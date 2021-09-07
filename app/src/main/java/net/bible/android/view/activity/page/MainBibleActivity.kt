@@ -538,7 +538,10 @@ class MainBibleActivity : CustomTitlebarActivityBase(), VerseActionModeMediator.
             startActivity(intent)
             true
         }
-        searchButton.setOnClickListener { startActivityForResult(searchControl.getSearchIntent(documentControl.currentDocument), ActivityBase.STD_REQUEST_CODE) }
+        searchButton.setOnClickListener {
+            Log.i("Themis", "setupToolbarButtons: step 7: click searchButton")
+            startActivityForResult(searchControl.getSearchIntent(documentControl.currentDocument), ActivityBase.STD_REQUEST_CODE)
+        }
         bookmarkButton.setOnClickListener { startActivityForResult(Intent(this, Bookmarks::class.java), STD_REQUEST_CODE) }
     }
 

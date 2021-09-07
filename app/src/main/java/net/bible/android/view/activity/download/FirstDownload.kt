@@ -19,6 +19,7 @@ package net.bible.android.view.activity.download
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import net.bible.android.activity.R
@@ -60,6 +61,7 @@ class FirstDownload : DownloadActivity() {
     }
 
     fun onOkay(v: View?) {
+        Log.i("Themis", "onOkay: step 3: click \"OK\" after downloading")
         val resultIntent = Intent(this, FirstDownload::class.java)
         setResult(DOWNLOAD_FINISH, resultIntent)
         finish()

@@ -73,13 +73,16 @@ class SearchIndex : CustomTitlebarActivityBase() {
         Log.d(TAG, "Finished displaying Search Index view")
     }
 
-    fun onCancel(v: View) = finish()
+    fun onCancel(v: View){
+        finish()
+    }
 
     /** Indexing is very slow
      *
      * @param v
      */
     fun onIndex(v: View) {
+        Log.i("Themis", "onIndex: step 8: click CREATE")
         Log.i(TAG, "CLICKED")
         try {
             // start background thread to create index

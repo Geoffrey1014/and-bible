@@ -5,6 +5,11 @@ buildscript {
     ext.room_version = '2.2.5'
 
     repositories {
+        maven{url 'https://maven.aliyun.com/repository/jcenter'}
+        maven{url 'https://maven.aliyun.com/repository/google'}
+        maven{url 'https://maven.aliyun.com/repository/public'}
+        maven{url 'https://maven.aliyun.com/repository/central'}
+        maven{url 'https://maven.aliyun.com/repositories/gradle-plugin' }
         jcenter()
         google()
     }
@@ -20,6 +25,11 @@ buildscript {
 
 allprojects {
     repositories {
+        maven{url 'https://maven.aliyun.com/repository/jcenter'}
+        maven{url 'https://maven.aliyun.com/repository/google'}
+        maven{url 'https://maven.aliyun.com/repository/public'}
+        maven{url 'https://maven.aliyun.com/repository/central'}
+        maven{url 'https://maven.aliyun.com/repositories/gradle-plugin' }
         jcenter()
         google()
         maven { url 'https://jitpack.io' }

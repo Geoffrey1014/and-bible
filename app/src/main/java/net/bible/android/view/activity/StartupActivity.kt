@@ -124,8 +124,16 @@ open class StartupActivity : CustomTitlebarActivityBase() {
         AlertDialog.Builder(this)
                 .setView(view)
                 .setCancelable(false)
-                .setPositiveButton(R.string.okay) { dialog, id -> it.resume(true) }
-                .setNegativeButton(R.string.cancel) { dialog, id -> it.resume(false)}
+                .setPositiveButton(R.string.okay) {
+                        dialog, id -> it.resume(true)
+                        Log.i("Themis", "askIfGotoDownloadActivity: step 1: click \"OK\" ")
+
+                }
+                .setNegativeButton(R.string.cancel) {
+                        dialog, id -> it.resume(false)
+                        Log.i("Themis", "askIfGotoDownloadActivity: step 1: Warning :click \"Cancel\" ")
+
+                }
             .create().show()
     }
 
