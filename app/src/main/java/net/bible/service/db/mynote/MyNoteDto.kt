@@ -17,6 +17,7 @@
  */
 package net.bible.service.db.mynote
 
+import android.util.Log
 import net.bible.android.control.versification.ConvertibleVerseRange
 import net.bible.android.control.versification.sort.ConvertibleVerseRangeUser
 import org.apache.commons.lang3.StringUtils
@@ -51,7 +52,14 @@ class MyNoteDto : ConvertibleVerseRangeUser {
         }
 
     fun getVerseRange(versification: Versification?): VerseRange {
-        return convertibleVerseRange!!.getVerseRange(versification)
+        val result : VerseRange
+        try{
+            result = convertibleVerseRange!!.getVerseRange(versification)
+        }catch (e : KotlinNullPointerException){
+            Log.i("Themis", "getVerseRange: step last : bomb!")
+            throw e
+        }
+        return result
     }
 
     override fun getConvertibleVerseRange(): ConvertibleVerseRange {

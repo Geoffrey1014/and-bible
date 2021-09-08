@@ -18,6 +18,7 @@
 package net.bible.android.view.activity.page.actionmode
 
 import android.content.Intent
+import android.util.Log
 import net.bible.android.activity.R
 import net.bible.android.control.bookmark.BookmarkControl
 import net.bible.android.control.mynote.MyNoteControl
@@ -72,6 +73,7 @@ open class VerseMenuCommandHandler(
                 isHandled = true
             }
             R.id.myNoteAddEdit -> {
+                Log.i("Themis", "handleMenuRequest: step 6: click myNoteAddEdit")
                 mainActivity.fullScreen = false
                 myNoteControl.showMyNote(verseRange)
                 mainActivity.invalidateOptionsMenu()

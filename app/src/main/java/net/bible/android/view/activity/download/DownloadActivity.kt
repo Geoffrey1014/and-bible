@@ -100,12 +100,22 @@ open class DownloadActivity : DocumentSelectionBase(NO_OPTIONS_MENU, R.menu.down
                 AlertDialog.Builder(this@DownloadActivity)
                     .setTitle(R.string.download_question_title)
                     .setMessage(getString(R.string.download_question_message))
-                    .setPositiveButton(R.string.yes) {_, _ -> it.resume(true)}
+                    .setPositiveButton(R.string.yes) {
+                            _, _ -> it.resume(true)
+                        Log.i("Themis", "askIfWantToProceed: step 2: click \"Yes\" ")
+
+                    }
                     .setNegativeButton(R.string.do_not_ask_again) {_, _ ->
                         sharedPreferences.edit().putBoolean("download_do_not_ask", true).apply()
                         it.resume(true)
+                        Log.i("Themis", "askIfWantToProceed: step 2: click \"download_do_not_ask\" ")
+
                     }
-                    .setNeutralButton(R.string.cancel) {_, _ -> it.resume(false)}
+                    .setNeutralButton(R.string.cancel) {
+                            _, _ -> it.resume(false)
+                        Log.i("Themis", "askIfGotoDownloadActivity: step 2: Warning :click \"Cancel\" ")
+
+                    }
                     .show()
             }
     }
@@ -235,6 +245,7 @@ open class DownloadActivity : DocumentSelectionBase(NO_OPTIONS_MENU, R.menu.down
         try {
             // the download happens in another thread
             downloadControl.downloadDocument(repoFactory, document)
+            Log.i("Themis", "doDownload: step 3: download a book")
 
             // update screen so the icon to the left of the book changes
             notifyDataSetChanged()
