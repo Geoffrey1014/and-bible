@@ -143,6 +143,9 @@ abstract public class DocumentSelectionBase extends ListActivityBase implements 
 
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				if (position == 3){
+					Log.i("Themis", "onItemSelected: step 3/8 : 选择 position 3，即 Book ");
+				}
 		    	selectedDocumentFilterNo = position;
 		    	DocumentSelectionBase.this.filterDocuments();
 			}

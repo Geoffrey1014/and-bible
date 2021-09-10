@@ -21,6 +21,8 @@
  */
 package net.bible.service.sword.index;
 
+import android.util.Log;
+
 import org.crosswire.jsword.book.Book;
 import org.crosswire.jsword.index.IndexManager;
 import org.crosswire.jsword.index.IndexManagerFactory;
@@ -43,7 +45,13 @@ public class IndexCreator  {
             public void run() {
             	IndexManager indexManager = IndexManagerFactory.getIndexManager();
             	indexManager.setIndexPolicy(new AndroidIndexPolicy());
-                indexManager.scheduleIndexCreation(book);
+            	try{
+					indexManager.scheduleIndexCreation(book);
+				}catch (StackOverflowError e){
+					Log.i("Themis", "run: step last bomb!");
+					throw e;
+				}
+
             }
         });
         work.start();

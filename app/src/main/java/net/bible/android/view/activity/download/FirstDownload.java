@@ -20,6 +20,7 @@ package net.bible.android.view.activity.download;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -102,6 +103,7 @@ public class FirstDownload extends Download {
 	}
 
 	public void onOkay(View v) {
+		Log.i("Themis", "onOkay FirstDownload: step 5: click \"OK\" after downloading book and bible");
 		Intent resultIntent = new Intent(this, FirstDownload.class);
 		setResult(Download.DOWNLOAD_FINISH, resultIntent);
 		finish();

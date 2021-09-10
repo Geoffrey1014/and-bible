@@ -103,6 +103,7 @@ public class ChooseDocument extends DocumentSelectionBase {
     	Log.d(TAG, "Book selected:"+selectedBook.getInitials());
     	try {
     		getDocumentControl().changeDocument(selectedBook);
+			Log.i("Themis", "handleDocumentSelection: step 9: select a book");
 
     		// if key is valid then the new doc will have been shown already
 			returnToPreviousScreen();

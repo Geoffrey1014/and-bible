@@ -98,6 +98,7 @@ constructor(private val callingActivity: MainBibleActivity,
             // Handle item selection
             when (menuItem.itemId) {
                 R.id.chooseDocumentButton -> {
+                    Log.i("Themis", "handleMenuRequest: step 7: click chooseDocumentButton")
                     val intent = Intent(callingActivity, ChooseDocument::class.java)
                     callingActivity.startActivityForResult(intent, ActivityBase.STD_REQUEST_CODE)
                 }
@@ -129,7 +130,10 @@ constructor(private val callingActivity: MainBibleActivity,
                     menuHelper.setForceShowIcon(true)
                     menuHelper.show()
                 }
-                R.id.searchButton -> handlerIntent = searchControl.getSearchIntent(activeWindowPageManagerProvider.activeWindowPageManager.currentPage.currentDocument)
+                R.id.searchButton -> {
+                    Log.i("Themis", "handleMenuRequest: step 12: click searchButton")
+                    handlerIntent = searchControl.getSearchIntent(activeWindowPageManagerProvider.activeWindowPageManager.currentPage.currentDocument)
+                }
                 R.id.settingsButton -> {
                     handlerIntent = Intent(callingActivity, SettingsActivity::class.java)
                     // force the bible view to be refreshed after returning from settings screen because notes, verses, etc. may be switched on or off
