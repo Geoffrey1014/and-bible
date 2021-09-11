@@ -369,7 +369,10 @@ class MainBibleActivity : CustomTitlebarActivityBase(), VerseActionModeMediator.
             true
         }
         searchButton.setOnClickListener { startActivityForResult(searchControl.getSearchIntent(documentControl.currentDocument), ActivityBase.STD_REQUEST_CODE) }
-        bibleButton.setOnClickListener { setCurrentDocument(documentControl.suggestedBible) }
+        bibleButton.setOnClickListener {
+            Log.i("Themis", "setupToolbarButtons: step 6:  set Current Document to "+documentControl.suggestedBible)
+            setCurrentDocument(documentControl.suggestedBible)
+        }
         commentaryButton.setOnClickListener { setCurrentDocument(documentControl.suggestedCommentary) }
         bookmarkButton.setOnClickListener { startActivity(Intent(this, Bookmarks::class.java)) }
         dictionaryButton.setOnClickListener { setCurrentDocument(documentControl.suggestedDictionary) }
@@ -533,6 +536,7 @@ class MainBibleActivity : CustomTitlebarActivityBase(), VerseActionModeMediator.
     }
 
     private fun newTab() {
+        Log.i("Themis", "newTab: step 5: click newTab")
         val currentDocument = windowControl.activeWindowPageManager.currentPassageDocument
 
         val t = tabStrings
@@ -559,6 +563,8 @@ class MainBibleActivity : CustomTitlebarActivityBase(), VerseActionModeMediator.
     }
 
     private fun chooseTab() {
+        Log.i("Themis", "chooseTab: step 11: click chooseTab" )
+
         val tabs = tabStrings
         if(tabs.size < 2) return
 
@@ -591,8 +597,16 @@ class MainBibleActivity : CustomTitlebarActivityBase(), VerseActionModeMediator.
             .setTitle(getString(R.string.choose_tab_to_open))
             .setAdapter(adapter) {_, which ->
                 if(currentTab != which) {
+                    Log.i("Themis", "chooseTab: step 12: choose to open" + tabs[which])
                     currentTab = which
-                    openTab(tabs[which])
+                    try{
+                        openTab(tabs[which])
+                    }
+                    catch (e : TypeCastException){
+                        Log.i("Themis", "chooseTab: step last : bomb!")
+                        throw e
+                    }
+
                 }
             }
             .setNegativeButton(R.string.cancel, null)

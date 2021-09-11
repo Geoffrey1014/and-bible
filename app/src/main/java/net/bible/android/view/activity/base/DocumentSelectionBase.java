@@ -128,6 +128,7 @@ abstract public class DocumentSelectionBase extends ListActivityBase implements 
 		getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//				Log.i("Themis", "onItemLongClick: step 8: longClick  " );
 			return listActionModeHelper.startActionMode(DocumentSelectionBase.this, position);
 			}
 		});
@@ -231,6 +232,7 @@ abstract public class DocumentSelectionBase extends ListActivityBase implements 
         		Book selectedBook = displayedDocuments.get(position);
         		if (selectedBook!=null) {
         			Log.d(TAG, "Selected "+selectedBook.getInitials());
+					Log.i("Themis", "onListItemClick: step 2: Select "+selectedBook.getInitials());
         			handleDocumentSelection(selectedBook);
         		}
 
@@ -367,6 +369,7 @@ abstract public class DocumentSelectionBase extends ListActivityBase implements 
 				documents.add(displayedDocuments.get(posn));
 			}
 		}
+		Log.i("Themis", "onActionItemClicked: step 8: selected " + documents);
 
 		if (!documents.isEmpty()) {
 			switch (item.getItemId()) {
@@ -411,6 +414,7 @@ abstract public class DocumentSelectionBase extends ListActivityBase implements 
 									public void onClick(DialogInterface dialog, int buttonId) {
 										try {
 											Log.d(TAG, "Deleting:" + document);
+											Log.i("Themis", "onClick handleDelete: step 9: " + "Deleting: " + document);
 											documentControl.deleteDocument(document);
 
 											// the doc list should now change

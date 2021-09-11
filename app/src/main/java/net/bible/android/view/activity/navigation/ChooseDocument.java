@@ -71,7 +71,9 @@ public class ChooseDocument extends DocumentSelectionBase {
 		populateMasterDocumentList(false);
 
 		Log.i(TAG, "ChooseDocument downloadControl:"+downloadControl);
-    }
+		Log.i("Themis", "onCreate DocumentSelectionBase: step 7: 进入DocumentSelection 页面");
+
+	}
 
 	/** load list of docs to display
 	 * 
@@ -145,6 +147,7 @@ public class ChooseDocument extends DocumentSelectionBase {
         }
         
 		if (!isHandled) {
+			Log.i("Themis", "onOptionsItemSelected: step 10: 返回 ");
             isHandled = super.onOptionsItemSelected(item);
         }
         
