@@ -135,7 +135,7 @@ constructor(private val callingActivity: MainBibleActivity,
                 R.id.historyButton -> handlerIntent = Intent(callingActivity, History::class.java)
                 R.id.bookmarksButton -> handlerIntent = Intent(callingActivity, Bookmarks::class.java)
                 R.id.manageLabels -> {
-                    Log.i("Themis", "handleMenuRequest: step 5: click manageLabels")
+                    Log.i("Themis", "Event 5: click \"Manage Bookmark Labels\" in the drawer")
                     handlerIntent = Intent(callingActivity, ManageLabels::class.java)
                     requestCode = IntentHelper.REFRESH_DISPLAY_ON_FINISH
                 }

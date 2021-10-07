@@ -56,7 +56,7 @@ public class LabelDialogs {
 
 	public void editLabel(Context context, final LabelDto label, final Callback onCreateCallback) {
 		if (label.getName().equals("")){
-			Log.i("Themis", "editLabel: step 9: edit 空 label");
+			Log.i("Themis", "Event 9: edit a empty label");
 		}
 		showDialog(context, R.string.edit, label, onCreateCallback);
 	}
@@ -84,18 +84,15 @@ public class LabelDialogs {
 				label.setName(name);
 				label.setBookmarkStyle(adp.getBookmarkStyleForOffset(labelStyle.getSelectedItemPosition()));
 
-				if (name.equals("")){
-					Log.i("Themis", "setPositiveButton onClick: step 6: 创建一个空 label");
-				}
-				else{
-					Log.i("Themis", "setPositiveButton onClick: step 7/9: 创建一个非空 label/修改一个空 label为非空");
-				}
-				try{
-					bookmarkControl.saveOrUpdateLabel(label);
-				}catch (kotlin.KotlinNullPointerException e){
-					Log.i("Themis", "setPositiveButton onClick: step last: bomb!");
-					throw e;
-				}
+//				if (name.equals("")){
+//					Log.i("Themis", "Event 7: create or edit a label with no name");
+//				}
+//				else{
+//					Log.i("Themis", "Event 7: create or edit a label named: \"" + name +"\"");
+//				}
+				Log.i("Themis", "Event 7: create or edit a label named: \"" + name +"\"");
+				bookmarkControl.saveOrUpdateLabel(label);
+
 
 
 				onCreateCallback.okay();
@@ -104,7 +101,7 @@ public class LabelDialogs {
 
 		alert.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
-				Log.i("Themis", "setNegativeButton onClick: step 6/7/9: Warning: 放弃创建/修改 label ");
+				Log.i("Themis", "Warning 7: cancel to create a label ");
 				// Canceled.
 			}
 		});

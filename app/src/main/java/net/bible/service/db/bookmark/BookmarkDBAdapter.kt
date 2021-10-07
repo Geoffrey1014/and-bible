@@ -24,11 +24,9 @@ import android.util.Log
 import androidx.sqlite.db.SupportSQLiteQueryBuilder.builder
 import net.bible.android.control.bookmark.BookmarkStyle
 import net.bible.android.control.speak.PlaybackSettings.Companion.fromJson
-import net.bible.service.db.SQLHelper
 import net.bible.service.db.DatabaseContainer
-import net.bible.service.db.bookmark.BookmarkDatabaseDefinition.BookmarkColumn
-import net.bible.service.db.bookmark.BookmarkDatabaseDefinition.BookmarkLabelColumn
-import net.bible.service.db.bookmark.BookmarkDatabaseDefinition.LabelColumn
+import net.bible.service.db.SQLHelper
+import net.bible.service.db.bookmark.BookmarkDatabaseDefinition.*
 import org.apache.commons.lang3.StringUtils
 import org.crosswire.jsword.passage.NoSuchKeyException
 import org.crosswire.jsword.passage.VerseRangeFactory
@@ -107,7 +105,11 @@ class BookmarkDBAdapter {
         newValues.put(LabelColumn.NAME, label.name)
         newValues.put(LabelColumn.BOOKMARK_STYLE, label.bookmarkStyleAsString)
         val newId = db.update(BookmarkDatabaseDefinition.Table.LABEL, CONFLICT_FAIL, newValues, "_id=?", arrayOf(label.id.toString())).toLong()
-        return getLabelDto(newId)!!
+        val label = getLabelDto(newId)
+        if(label == null){
+            Log.i("Themis", " Crash: KotlinNullPointerException")
+        }
+        return label!!
     }
 
     fun removeBookmarkLabelJoin(bookmark: BookmarkDto, label: LabelDto): Boolean {
