@@ -71,7 +71,7 @@ public class SearchIndexProgressStatus extends ProgressActivityBase {
 		// give the document up to 12 secs to reload - the Progress declares itself finished before the index status has been changed
 		int attempts = 0;
 		if(documentBeingIndexed == null){
-			Log.i("Themis", "updateProgress: step last: bomb!");
+			Log.i("Themis", "Crash!: NullPointerException");
 		}
 
 		while (!IndexStatus.DONE.equals(documentBeingIndexed.getIndexStatus()) && attempts++<6) {

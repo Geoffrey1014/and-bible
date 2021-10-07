@@ -82,7 +82,7 @@ class SearchIndex : CustomTitlebarActivityBase() {
      * @param v
      */
     fun onIndex(v: View) {
-        Log.i("Themis", "onIndex: step 8: click CREATE")
+        Log.i("Themis", "Event 8: click CREATE")
         Log.i(TAG, "CLICKED")
         try {
             // start background thread to create index

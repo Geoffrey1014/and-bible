@@ -73,7 +73,7 @@ open class VerseMenuCommandHandler(
                 isHandled = true
             }
             R.id.myNoteAddEdit -> {
-                Log.i("Themis", "handleMenuRequest: step 6: click myNoteAddEdit")
+                Log.i("Themis", "Event 6: click myNoteAddEdit after longPress chapterVerse")
                 mainActivity.fullScreen = false
                 myNoteControl.showMyNote(verseRange)
                 mainActivity.invalidateOptionsMenu()

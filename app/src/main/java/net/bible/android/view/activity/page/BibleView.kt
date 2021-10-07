@@ -641,7 +641,7 @@ class BibleView(val mainBibleActivity: MainBibleActivity,
 
         override fun onLongClick(v: View): Boolean {
             Log.d(TAG, "onLongClickListener")
-            Log.i("Themis", "verseLongPress: step 5: longPress chapterVerse")
+            Log.i("Themis", "Event 5: longPress chapterVerse")
             val result = hitTestResult
             return if (result.type == HitTestResult.SRC_ANCHOR_TYPE) {
                 setContextMenuInfo(result.extra!!)
