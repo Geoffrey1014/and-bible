@@ -56,7 +56,7 @@ class MyNoteDto : ConvertibleVerseRangeUser {
         try{
             result = convertibleVerseRange!!.getVerseRange(versification)
         }catch (e : KotlinNullPointerException){
-            Log.i("Themis", "getVerseRange: step last : bomb!")
+            Log.i("Themis", "Crash！ : KotlinNullPointerException")
             throw e
         }
         return result

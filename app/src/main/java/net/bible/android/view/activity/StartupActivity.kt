@@ -126,13 +126,13 @@ open class StartupActivity : CustomTitlebarActivityBase() {
                 .setCancelable(false)
                 .setPositiveButton(R.string.okay) {
                         dialog, id -> it.resume(true)
-                    Log.i("Themis", "askIfGotoDownloadActivity: step 1: click \"OK\" ")
+                    Log.i("Themis", "Event 1: click \"OK\" in the \"Download a Bible from the Internet\" dialog at StartupActivity")
 
 
                 }
                 .setNegativeButton(R.string.cancel) {
                         dialog, id -> it.resume(false)
-                    Log.i("Themis", "askIfGotoDownloadActivity: step 1: Warning :click \"Cancel\" ")
+                    Log.i("Themis", "Warning 1: click \"Cancel\" in the \"Download a Bible from the Internet\" dialog at StartupActivity")
 
                 }
             .create().show()
