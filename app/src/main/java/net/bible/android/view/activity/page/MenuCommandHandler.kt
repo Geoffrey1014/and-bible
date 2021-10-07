@@ -105,7 +105,7 @@ constructor(private val callingActivity: MainBibleActivity,
             // Handle item selection
             when (menuItem.itemId) {
                 R.id.chooseDocumentButton -> {
-                    Log.i("Themis", "handleMenuRequest: step : click chooseDocumentButton")
+//                    Log.i("Themis", "Event 7 : click chooseDocumentButton")
                     val intent = Intent(callingActivity, ChooseDocument::class.java)
                     callingActivity.startActivityForResult(intent, ActivityBase.STD_REQUEST_CODE)
                 }

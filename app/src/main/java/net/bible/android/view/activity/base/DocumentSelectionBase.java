@@ -232,7 +232,7 @@ abstract public class DocumentSelectionBase extends ListActivityBase implements 
         		Book selectedBook = displayedDocuments.get(position);
         		if (selectedBook!=null) {
         			Log.d(TAG, "Selected "+selectedBook.getInitials());
-					Log.i("Themis", "onListItemClick: step 2: Select "+selectedBook.getInitials());
+					Log.i("Themis", "Event 2: Selected a book: "+selectedBook.getName());
         			handleDocumentSelection(selectedBook);
         		}
 
@@ -369,7 +369,7 @@ abstract public class DocumentSelectionBase extends ListActivityBase implements 
 				documents.add(displayedDocuments.get(posn));
 			}
 		}
-		Log.i("Themis", "onActionItemClicked: step 8: selected " + documents);
+		Log.i("Themis", "Event 8: selected documents to delete: " + documents);
 
 		if (!documents.isEmpty()) {
 			switch (item.getItemId()) {
@@ -414,7 +414,7 @@ abstract public class DocumentSelectionBase extends ListActivityBase implements 
 									public void onClick(DialogInterface dialog, int buttonId) {
 										try {
 											Log.d(TAG, "Deleting:" + document);
-											Log.i("Themis", "onClick handleDelete: step 9: " + "Deleting: " + document);
+											Log.i("Themis", "Event 9: " + "deleting a document: " + document);
 											documentControl.deleteDocument(document);
 
 											// the doc list should now change

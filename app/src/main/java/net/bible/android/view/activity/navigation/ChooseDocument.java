@@ -71,7 +71,7 @@ public class ChooseDocument extends DocumentSelectionBase {
 		populateMasterDocumentList(false);
 
 		Log.i(TAG, "ChooseDocument downloadControl:"+downloadControl);
-		Log.i("Themis", "onCreate DocumentSelectionBase: step 7: 进入DocumentSelection 页面");
+		Log.i("Themis", "Event 7: go to \"Choose Document\"");
 
 	}
 
@@ -147,7 +147,7 @@ public class ChooseDocument extends DocumentSelectionBase {
         }
         
 		if (!isHandled) {
-			Log.i("Themis", "onOptionsItemSelected: step 10: 返回 ");
+			Log.i("Themis", "Event 10: press back ");
             isHandled = super.onOptionsItemSelected(item);
         }
         

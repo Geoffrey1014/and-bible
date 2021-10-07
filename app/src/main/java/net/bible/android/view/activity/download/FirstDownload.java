@@ -103,7 +103,7 @@ public class FirstDownload extends Download {
 	}
 
 	public void onOkay(View v) {
-		Log.i("Themis", "onOkay FirstDownload: step 4: click \"OK\" after downloading books or bibles");
+		Log.i("Themis", "Event 4: click \"OK\" \" in \"Download Documents\"after downloading documents");
 		Intent resultIntent = new Intent(this, FirstDownload.class);
 		setResult(Download.DOWNLOAD_FINISH, resultIntent);
 		finish();

@@ -370,7 +370,7 @@ class MainBibleActivity : CustomTitlebarActivityBase(), VerseActionModeMediator.
         }
         searchButton.setOnClickListener { startActivityForResult(searchControl.getSearchIntent(documentControl.currentDocument), ActivityBase.STD_REQUEST_CODE) }
         bibleButton.setOnClickListener {
-            Log.i("Themis", "setupToolbarButtons: step 6:  set Current Document to "+documentControl.suggestedBible)
+            Log.i("Themis", "Event 6:  set Current Document to a new book: "+documentControl.suggestedBible)
             setCurrentDocument(documentControl.suggestedBible)
         }
         commentaryButton.setOnClickListener { setCurrentDocument(documentControl.suggestedCommentary) }
@@ -536,7 +536,7 @@ class MainBibleActivity : CustomTitlebarActivityBase(), VerseActionModeMediator.
     }
 
     private fun newTab() {
-        Log.i("Themis", "newTab: step 5: click newTab")
+        Log.i("Themis", "Event 5: click \"New Tab\" in menu \"Tabs\"")
         val currentDocument = windowControl.activeWindowPageManager.currentPassageDocument
 
         val t = tabStrings
@@ -563,7 +563,7 @@ class MainBibleActivity : CustomTitlebarActivityBase(), VerseActionModeMediator.
     }
 
     private fun chooseTab() {
-        Log.i("Themis", "chooseTab: step 11: click chooseTab" )
+        Log.i("Themis", "Event 11: click \"Switch to tab\" in menu \"Tabs\"" )
 
         val tabs = tabStrings
         if(tabs.size < 2) return
@@ -597,13 +597,21 @@ class MainBibleActivity : CustomTitlebarActivityBase(), VerseActionModeMediator.
             .setTitle(getString(R.string.choose_tab_to_open))
             .setAdapter(adapter) {_, which ->
                 if(currentTab != which) {
-                    Log.i("Themis", "chooseTab: step 12: choose to open" + tabs[which])
+                    val windowRepositoryState = JSONObject(tabs[which])
+                    val windows = windowRepositoryState.getJSONArray("windowState")
+                    for(i in 0 until windows.length()) {
+                        pageManager.restoreState(windows.getJSONObject(i).getJSONObject("pageManager"))
+//                        Log.i("Themis", "chooseTab: " + i +" "+ windows.getJSONObject(i).getJSONObject("pageManager").getJSONObject("biblePage"))
+//                        Log.i("Themis", "chooseTab: " + pageManager.currentPage.singleKey.name)
+                    }
+
+                    Log.i("Themis", "Event 12: choose tab to open: " + pageManager.currentPage.currentDocument + " "+pageManager.currentPage.singleKey.name)
                     currentTab = which
                     try{
                         openTab(tabs[which])
                     }
                     catch (e : TypeCastException){
-                        Log.i("Themis", "chooseTab: step last : bomb!")
+                        Log.i("Themis", "Crash!: TypeCastException")
                         throw e
                     }
 
