@@ -48,7 +48,7 @@ public class IndexCreator  {
             	try{
 					indexManager.scheduleIndexCreation(book);
 				}catch (StackOverflowError e){
-					Log.i("Themis", "run: step last bomb!");
+					Log.i("Themis", "Crash!: StackOverflowError");
 					throw e;
 				}
 

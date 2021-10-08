@@ -185,12 +185,12 @@ public class Download extends DocumentSelectionBase {
 					.setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
 							doDownload(documentToDownload);
-							Log.i("Themis", "manageDownload: step 2/4: 下载一个 document（bible or book）");
+							Log.i("Themis", "Event 2: click \"OK\" to download a document（bible or book）: " + documentToDownload.getName());
 						}
 					})
 					.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
-							Log.i("Themis", "manageDownload: step 2/4: 放弃下载一个 document （bible or book）");
+							Log.i("Themis", "Warning 2: : click \"CANCEL\" to give up downloading a document （bible or book）: " +  documentToDownload.getName());
 						}
 					}).create().show();
 		}
