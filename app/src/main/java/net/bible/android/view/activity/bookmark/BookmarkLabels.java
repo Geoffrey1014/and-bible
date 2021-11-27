@@ -201,6 +201,7 @@ public class BookmarkLabels extends ListActivityBase {
 		switch (item.getItemId()) {
 			case (R.id.manageLabels):
 				isHandled = true;
+//				Log.i("Themis", "Event 5.2: click \"Manage Bookmark Labels\" in the drawer");
 				Intent intent = new Intent(this, ManageLabels.class);
 				startActivityForResult(intent, IntentHelper.REFRESH_DISPLAY_ON_FINISH);
 				break;

@@ -64,7 +64,9 @@ public class ManageLabels extends ListActivityBase {
 		super.buildActivityComponent().inject(this);
 
         initialiseView();
-    }
+		Log.i("Themis", "Event 4: go into \"Manage Bookmark Labels\" layout");
+
+	}
 
     private void initialiseView() {
     	getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -89,7 +91,7 @@ public class ManageLabels extends ListActivityBase {
      */
     public void onNewLabel(View v) {
     	Log.i(TAG, "New label clicked");
-		Log.i("Themis", "Event 6: click \"NEW LABEL\" in \"Manage Bookmark Labels\"");
+		Log.i("Themis", "Event 5: click \"NEW LABEL\" in \"Manage Bookmark Labels\"");
     	LabelDto newLabel = new LabelDto();
 		labelDialogs.createLabel(this, newLabel, new Callback() {
 			@Override

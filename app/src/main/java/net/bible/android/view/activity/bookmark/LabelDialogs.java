@@ -90,7 +90,7 @@ public class LabelDialogs {
 //				else{
 //					Log.i("Themis", "Event 7: create or edit a label named: \"" + name +"\"");
 //				}
-				Log.i("Themis", "Event 7: create or edit a label named: \"" + name +"\"");
+//				Log.i("Themis", "Event 7: create or edit a label named: \"" + name +"\"");
 				bookmarkControl.saveOrUpdateLabel(label);
 
 
@@ -101,7 +101,7 @@ public class LabelDialogs {
 
 		alert.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
-				Log.i("Themis", "Warning 7: cancel to create a label ");
+				Log.i("Themis", "Warning 6: cancel to create or edit a label ");
 				// Canceled.
 			}
 		});

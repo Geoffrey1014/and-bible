@@ -286,6 +286,7 @@ public class Bookmarks extends ListActivityBase implements ListActionModeHelper.
 				break;
 			case (R.id.manageLabels):
 				isHandled = true;
+//				Log.i("Themis", "Event 5.1: click \"Manage Bookmark Labels\" in the drawer");
 				Intent intent = new Intent(this, ManageLabels.class);
 				startActivityForResult(intent, 1);
 				break;
