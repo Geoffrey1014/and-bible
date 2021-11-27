@@ -302,15 +302,19 @@ open class BookmarkControl @Inject constructor(
         return try {
             if (label.id == null) {
                 if(label.name.equals("")){
-                    Log.i("Themis", "Event 7: create a label with no name");
+                    Log.i("Themis", "Event 6: create a label with no name");
 
                 }else{
-                    Log.i("Themis", "Event 6: create a label named: \"" + label.name +"\"");
+                    Log.i("Themis", "Event 5: create a label named: \"" + label.name +"\"");
 
                 }
                 db.insertLabel(label)
             } else {
-                Log.i("Themis", "Event 8: edit a label to name: \"" + label.name +"\"");
+                if(label.name.equals("")){
+                    Log.i("Themis", "Event 8: edit a label name to empty string");
+                }else{
+                    Log.i("Themis", "Event 7: edit a label to name: \"" + label.name +"\"");
+                }
 
                 db.updateLabel(label)
 
@@ -322,8 +326,15 @@ open class BookmarkControl @Inject constructor(
     fun deleteLabel(label: LabelDto?): Boolean {
         var bOk = false
         if (label?.id != null && LABEL_ALL != label && LABEL_UNLABELLED != label) {
-            Log.i("Themis", "Event 10: delete a label named: \"" + label.name + "\"")
+
+            if (label.name.equals("")){
+                Log.i("Themis", "Event 10: delete a label with on name")
+            }else{
+                Log.i("Themis", "Event 9: delete a label named: \"" + label.name + "\"")
+            }
+
             val db = BookmarkDBAdapter()
+            db
             bOk = try {
                 db.removeLabel(label)
             } finally {}

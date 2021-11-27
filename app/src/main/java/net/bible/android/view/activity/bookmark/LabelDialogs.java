@@ -56,7 +56,7 @@ public class LabelDialogs {
 
 	public void editLabel(Context context, final LabelDto label, final Callback onCreateCallback) {
 		if (label.getName().equals("")){
-			Log.i("Themis", "Event 9: edit a empty label");
+			Log.i("Themis", "Event 11: edit a empty label");
 		}
 		showDialog(context, R.string.edit, label, onCreateCallback);
 	}
