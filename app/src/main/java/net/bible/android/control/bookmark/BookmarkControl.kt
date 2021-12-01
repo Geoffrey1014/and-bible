@@ -53,15 +53,18 @@ import javax.inject.Inject
  */
 @ApplicationScope
 open class BookmarkControl @Inject constructor(
-	private val swordContentFacade: SwordContentFacade,
-	private val activeWindowPageManagerProvider: ActiveWindowPageManagerProvider, resourceProvider: ResourceProvider)
-{
+    private val swordContentFacade: SwordContentFacade,
+    private val activeWindowPageManagerProvider: ActiveWindowPageManagerProvider, resourceProvider: ResourceProvider
+) {
     private val LABEL_ALL = LabelDto(-999L, resourceProvider.getString(R.string.all), null)
-	private val LABEL_UNLABELLED = LabelDto(-998L, resourceProvider.getString(R.string.label_unlabelled), null)
+    private val LABEL_UNLABELLED = LabelDto(-998L, resourceProvider.getString(R.string.label_unlabelled), null)
 
-	fun updateBookmarkSettings(settings: PlaybackSettings) {
+    fun updateBookmarkSettings(settings: PlaybackSettings) {
         if (activeWindowPageManagerProvider.activeWindowPageManager.currentPage.bookCategory == BookCategory.BIBLE) {
-            updateBookmarkSettings(activeWindowPageManagerProvider.activeWindowPageManager.currentBible.singleKey, settings)
+            updateBookmarkSettings(
+                activeWindowPageManagerProvider.activeWindowPageManager.currentBible.singleKey,
+                settings
+            )
         }
     }
 
@@ -102,7 +105,8 @@ open class BookmarkControl @Inject constructor(
                 val actionTextColor = getResourceColor(R.color.snackbar_action_text)
                 Snackbar.make(currentView, message, Snackbar.LENGTH_LONG)
                     .setActionTextColor(actionTextColor)
-                    .setAction(R.string.assign_labels) { showBookmarkLabelsActivity(currentActivity, affectedBookmark) }.show()
+                    .setAction(R.string.assign_labels) { showBookmarkLabelsActivity(currentActivity, affectedBookmark) }
+                    .show()
                 bOk = true
             } else {
                 Dialogs.getInstance().showErrorMsg(R.string.error_occurred)
@@ -155,7 +159,8 @@ open class BookmarkControl @Inject constructor(
         try {
             val currentBible = activeWindowPageManagerProvider.activeWindowPageManager.currentBible
             val versification = currentBible.versification
-            verseText = swordContentFacade.getPlainText(currentBible.currentDocument, bookmark.getVerseRange(versification))
+            verseText =
+                swordContentFacade.getPlainText(currentBible.currentDocument, bookmark.getVerseRange(versification))
             verseText = limitTextLength(verseText)
         } catch (e: Exception) {
             Log.e(TAG, "Error getting verse text", e)
@@ -175,24 +180,26 @@ open class BookmarkControl @Inject constructor(
         }
 
     /** create a new bookmark  */
-    fun addOrUpdateBookmark(bookmark: BookmarkDto, doNotSync: Boolean=false): BookmarkDto {
+    fun addOrUpdateBookmark(bookmark: BookmarkDto, doNotSync: Boolean = false): BookmarkDto {
         val db = BookmarkDBAdapter()
         val newBookmark = try {
             db.insertOrUpdateBookmark(bookmark)
-        } finally {}
-        if(!doNotSync) {
+        } finally {
+        }
+        if (!doNotSync) {
             ABEventBus.getDefault().post(SynchronizeWindowsEvent())
         }
         return newBookmark
     }
 
     /** update bookmark date  */
-	private fun refreshBookmarkDate(bookmark: BookmarkDto?): BookmarkDto? {
+    private fun refreshBookmarkDate(bookmark: BookmarkDto?): BookmarkDto? {
         val db = BookmarkDBAdapter()
         var updatedBookmark: BookmarkDto? = null
         updatedBookmark = try {
             db.updateBookmarkDate(bookmark!!)
-        } finally {}
+        } finally {
+        }
         return updatedBookmark
     }
 
@@ -207,7 +214,8 @@ open class BookmarkControl @Inject constructor(
                     bookmarks.add(bookmark)
                 }
             }
-        } finally {}
+        } finally {
+        }
         return bookmarks
     }
 
@@ -226,7 +234,8 @@ open class BookmarkControl @Inject constructor(
         var bookmark: BookmarkDto? = null
         bookmark = try {
             db.getBookmarkByStartKey(osisRef!!)
-        } finally {}
+        } finally {
+        }
         return bookmark
     }
 
@@ -237,9 +246,10 @@ open class BookmarkControl @Inject constructor(
             val db = BookmarkDBAdapter()
             bOk = try {
                 db.removeBookmark(bookmark)
-            } finally { }
+            } finally {
+            }
         }
-        if(!doNotSync) {
+        if (!doNotSync) {
             ABEventBus.getDefault().post(SynchronizeWindowsEvent())
         }
         return bOk
@@ -248,15 +258,16 @@ open class BookmarkControl @Inject constructor(
     /** get bookmarks with the given label  */
     fun getBookmarksWithLabel(label: LabelDto?): List<BookmarkDto> {
         val db = BookmarkDBAdapter()
-		var bookmarkList: List<BookmarkDto>
-		try {
+        var bookmarkList: List<BookmarkDto>
+        try {
             bookmarkList = when {
-				LABEL_ALL == label -> db.allBookmarks
-				LABEL_UNLABELLED == label -> db.unlabelledBookmarks
-				else -> db.getBookmarksWithLabel(label!!)
-			}
+                LABEL_ALL == label -> db.allBookmarks
+                LABEL_UNLABELLED == label -> db.unlabelledBookmarks
+                else -> db.getBookmarksWithLabel(label!!)
+            }
             bookmarkList = getSortedBookmarks(bookmarkList)
-        } finally {}
+        } finally {
+        }
         return bookmarkList
     }
 
@@ -269,13 +280,14 @@ open class BookmarkControl @Inject constructor(
         val db = BookmarkDBAdapter()
         labels = try {
             db.getBookmarkLabels(bookmark)
-        } finally {}
+        } finally {
+        }
         return labels
     }
 
     /** label the bookmark with these and only these labels  */
     fun setBookmarkLabels(bookmark: BookmarkDto?, labels_: List<LabelDto>) { // never save LABEL_ALL
-		val labels = labels_.toMutableList()
+        val labels = labels_.toMutableList()
         labels.remove(LABEL_ALL)
         labels.remove(LABEL_UNLABELLED)
         val db = BookmarkDBAdapter()
@@ -293,7 +305,8 @@ open class BookmarkControl @Inject constructor(
             for (label in added) {
                 db.insertBookmarkLabelJoin(bookmark, label)
             }
-        } finally {}
+        } finally {
+        }
         ABEventBus.getDefault().post(SynchronizeWindowsEvent())
     }
 
@@ -301,25 +314,26 @@ open class BookmarkControl @Inject constructor(
         val db = BookmarkDBAdapter()
         return try {
             if (label.id == null) {
-                if(label.name.equals("")){
+                if (label.name.equals("")) {
                     Log.i("Themis", "Event 6: create a label with no name");
 
-                }else{
-                    Log.i("Themis", "Event 5: create a label named: \"" + label.name +"\"");
+                } else {
+                    Log.i("Themis", "Event 5: create a label named: \"" + label.name + "\"");
 
                 }
                 db.insertLabel(label)
             } else {
-                if(label.name.equals("")){
-                    Log.i("Themis", "Event 8: edit a label name to empty string");
-                }else{
-                    Log.i("Themis", "Event 7: edit a label to name: \"" + label.name +"\"");
+                if (label.name.equals("")) {
+                    Log.i("Themis", "Event 8: edit a named label to unnamed");
+                } else {
+                    Log.i("Themis", "Event 7: edit a named label to: \"" + label.name + "\"");
                 }
 
                 db.updateLabel(label)
 
             }
-        } finally {}
+        } finally {
+        }
     }
 
     /** delete this bookmark (and any links to labels)  */
@@ -327,19 +341,53 @@ open class BookmarkControl @Inject constructor(
         var bOk = false
         if (label?.id != null && LABEL_ALL != label && LABEL_UNLABELLED != label) {
 
-            if (label.name.equals("")){
-                Log.i("Themis", "Event 10: delete a label with on name")
-            }else{
-                Log.i("Themis", "Event 9: delete a label named: \"" + label.name + "\"")
-            }
-
             val db = BookmarkDBAdapter()
             db
             bOk = try {
                 db.removeLabel(label)
-            } finally {}
+            } finally {
+            }
+
+            if (label.name.equals("")) {
+                if (haveUnNamedLables(db)){
+                    Log.i("Themis", "Event 10: delete a unnamed label")
+                }
+                else{
+                    Log.i("Themis", "Event 12: delete the last unnamed label")
+                }
+
+            } else {
+                if (haveNamedLables(db)){
+                    Log.i("Themis", "Event 9: delete a named label: \"" + label.name + "\"")
+                }
+                else{
+                    Log.i("Themis", "Event 13: delete the last named label: \"" + label.name + "\"")
+                }
+            }
+
+
         }
         return bOk
+    }
+
+    fun haveNamedLables(db: BookmarkDBAdapter): Boolean {
+        var count = 0
+        for (la: LabelDto in db.allLabels) {
+            if (!la.name.equals("")) {
+                count += 1
+            }
+        }
+        return count > 0
+    }
+
+    fun haveUnNamedLables(db: BookmarkDBAdapter): Boolean {
+        var count = 0
+        for (la: LabelDto in db.allLabels) {
+            if (la.name.equals("")) {
+                count += 1
+            }
+        }
+        return count > 0
     }
 
     // add special label that is automatically associated with all-bookmarks
@@ -358,8 +406,9 @@ open class BookmarkControl @Inject constructor(
             val labelList: MutableList<LabelDto> = ArrayList()
             try {
                 labelList.addAll(db.allLabels)
-            } finally {}
-			labelList.sort()
+            } finally {
+            }
+            labelList.sort()
             return labelList
         }
 
@@ -407,7 +456,10 @@ open class BookmarkControl @Inject constructor(
             return currentPageControl.isBibleShown || currentPageControl.isCommentaryShown
         }
 
-    private fun showBookmarkLabelsActivity(currentActivity: Activity, bookmarkDto: BookmarkDto?) { // Show label view for new bookmark
+    private fun showBookmarkLabelsActivity(
+        currentActivity: Activity,
+        bookmarkDto: BookmarkDto?
+    ) { // Show label view for new bookmark
         val intent = Intent(currentActivity, BookmarkLabels::class.java)
         intent.putExtra(BOOKMARK_IDS_EXTRA, longArrayOf(bookmarkDto!!.id!!))
         currentActivity.startActivity(intent)
@@ -419,7 +471,8 @@ open class BookmarkControl @Inject constructor(
             val label: LabelDto
             label = try {
                 db.orCreateSpeakLabel
-            } finally {}
+            } finally {
+            }
             return label
         }
 

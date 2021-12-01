@@ -46,6 +46,8 @@ class BookmarkDBAdapter {
     fun insertOrUpdateBookmark(bookmark: BookmarkDto): BookmarkDto { // Create a new row of values to insert.
         val newValues = ContentValues()
         val key = bookmark.verseRange
+        Log.i(TAG, "insertOrUpdateBookmark: "+key)
+
         // must save a Key's versification along with the key!
         val v11nName = key.versification.name
         // Gets the current system time in milliseconds
