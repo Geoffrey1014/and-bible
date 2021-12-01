@@ -370,12 +370,17 @@ class MainBibleActivity : CustomTitlebarActivityBase(), VerseActionModeMediator.
         }
         searchButton.setOnClickListener { startActivityForResult(searchControl.getSearchIntent(documentControl.currentDocument), ActivityBase.STD_REQUEST_CODE) }
         bibleButton.setOnClickListener {
-            Log.i("Themis", "Event 6:  set Current Document to a new book: "+documentControl.suggestedBible)
+            Log.i("Themis", "Event 5:  set Current Document to a new bible: "+documentControl.suggestedBible)
             setCurrentDocument(documentControl.suggestedBible)
         }
-        commentaryButton.setOnClickListener { setCurrentDocument(documentControl.suggestedCommentary) }
+        commentaryButton.setOnClickListener {
+            Log.i("Themis", "Event 5:  set Current Document to a new commentary: "+documentControl.suggestedCommentary)
+            setCurrentDocument(documentControl.suggestedCommentary)
+        }
         bookmarkButton.setOnClickListener { startActivity(Intent(this, Bookmarks::class.java)) }
-        dictionaryButton.setOnClickListener { setCurrentDocument(documentControl.suggestedDictionary) }
+        dictionaryButton.setOnClickListener {
+            Log.i("Themis", "Event 5:  set Current Document to a new dictionary: "+documentControl.suggestedDictionary)
+            setCurrentDocument(documentControl.suggestedDictionary) }
     }
 
     class AutoFullScreenChanged(val newValue: Boolean)
@@ -525,6 +530,7 @@ class MainBibleActivity : CustomTitlebarActivityBase(), VerseActionModeMediator.
         documentViewManager.resetView()
         windowControl.windowSync.synchronizeAllScreens()
         var text = windowControl.windowRepository.name
+//        Log.i("Themis", "openTab: " + windowControl.windowRepository.name )
 
         if(text.isEmpty())
             text = getString(R.string.tab_number, currentTab + 1)
@@ -536,7 +542,7 @@ class MainBibleActivity : CustomTitlebarActivityBase(), VerseActionModeMediator.
     }
 
     private fun newTab() {
-        Log.i("Themis", "Event 5: click \"New Tab\" in menu \"Tabs\"")
+        Log.i("Themis", "Event 4: click \"New Tab\" in menu \"Tabs\"")
         val currentDocument = windowControl.activeWindowPageManager.currentPassageDocument
 
         val t = tabStrings
@@ -563,7 +569,7 @@ class MainBibleActivity : CustomTitlebarActivityBase(), VerseActionModeMediator.
     }
 
     private fun chooseTab() {
-        Log.i("Themis", "Event 11: click \"Switch to tab\" in menu \"Tabs\"" )
+//        Log.i("Themis", "Event 8: click \"Switch to tab\" in menu \"Tabs\"" )
 
         val tabs = tabStrings
         if(tabs.size < 2) return
@@ -605,12 +611,13 @@ class MainBibleActivity : CustomTitlebarActivityBase(), VerseActionModeMediator.
 //                        Log.i("Themis", "chooseTab: " + pageManager.currentPage.singleKey.name)
                     }
 
-                    Log.i("Themis", "Event 12: choose tab to open: " + pageManager.currentPage.currentDocument + " "+pageManager.currentPage.singleKey.name)
+                    Log.i("Themis", "Event 8: choose a tab to open: " + pageManager.currentPage.currentDocument + " "+pageManager.currentPage.singleKey.name)
                     currentTab = which
                     try{
                         openTab(tabs[which])
                     }
                     catch (e : TypeCastException){
+                        Log.i("Themis", "Event 9: open a tab that file is deleted")
                         Log.i("Themis", "Crash!: TypeCastException")
                         throw e
                     }
