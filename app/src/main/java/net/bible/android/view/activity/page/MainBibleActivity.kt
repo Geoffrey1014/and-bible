@@ -240,7 +240,7 @@ class MainBibleActivity : CustomTitlebarActivityBase(), VerseActionModeMediator.
             }
             else {
                 drawerLayout.openDrawer(GravityCompat.START)
-                Log.i("Themis", "Event 5 : open the left drawer")
+//                Log.i("Themis", "Event 5 : open the left drawer")
             }
         }
 

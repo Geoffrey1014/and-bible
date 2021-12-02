@@ -185,13 +185,29 @@ public class Download extends DocumentSelectionBase {
 					.setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
 							doDownload(documentToDownload);
-							Log.i("Themis", "Event 2: click \"OK\" to download a document（bible or book）: " + documentToDownload.getName());
+							Log.i("Themis", "onClick: "+documentToDownload.getBookCategory().getName());
+							if (documentToDownload.getBookCategory().getName().equals("Biblical Texts")){
+								Log.i("Themis", "Event 2: click \"OK\" to download a bible: " + documentToDownload.getName());
+							}
+							else if (documentToDownload.getBookCategory().getName().equals("Generic Books")){
+								Log.i("Themis", "Event 3: click \"OK\" to download a book: " + documentToDownload.getName());
+							}
+							else{
+								Log.i("Themis", "Event : click \"OK\" to download an other doc: " + documentToDownload.getName());
+							}
 						}
 					})
 					.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
-							Log.i("Themis", "Warning 2: : click \"CANCEL\" to give up downloading a document （bible or book）: " +  documentToDownload.getName());
-						}
+							if (documentToDownload.getBookCategory().getName().equals("Biblical Texts")){
+								Log.i("Themis", "Warning 2: click \"CANCEL\" to download a bible: " + documentToDownload.getName());
+							}
+							else if (documentToDownload.getBookCategory().getName().equals("General Books")){
+								Log.i("Themis", "Warning 3: click \"CANCEL\" to download a book: " + documentToDownload.getName());
+							}
+							else{
+								Log.i("Themis", "Warning : click \"CANCEL\" to download an other doc: " + documentToDownload.getName());
+							}						}
 					}).create().show();
 		}
 	}

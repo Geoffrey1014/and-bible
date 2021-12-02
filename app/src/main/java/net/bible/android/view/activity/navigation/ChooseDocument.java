@@ -69,8 +69,8 @@ public class ChooseDocument extends DocumentSelectionBase {
 		setListAdapter(documentItemAdapter);
 
 		populateMasterDocumentList(false);
-
-		Log.i(TAG, "ChooseDocument downloadControl:"+downloadControl);
+		Log.i("Themis", "Event 5: go into \"Choose Document\" view");
+		Log.i("Themis", "ChooseDocument downloadControl:"+downloadControl);
     }
 
 	/** load list of docs to display
@@ -103,7 +103,13 @@ public class ChooseDocument extends DocumentSelectionBase {
     	Log.d(TAG, "Book selected:"+selectedBook.getInitials());
     	try {
     		getDocumentControl().changeDocument(selectedBook);
-			Log.i("Themis", "Event 7: select a document: "+ selectedBook.getName());
+    		if (selectedBook.getBookCategory().getName().equals("Generic Books")){
+				Log.i("Themis", "Event 6: select a book: "+ selectedBook.getName());
+			}
+    		else{
+				Log.i("Themis", "Event 10: select a document (not book): "+ selectedBook.getName());
+			}
+
 
     		// if key is valid then the new doc will have been shown already
 			returnToPreviousScreen();

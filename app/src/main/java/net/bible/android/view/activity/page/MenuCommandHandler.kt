@@ -98,7 +98,7 @@ constructor(private val callingActivity: MainBibleActivity,
             // Handle item selection
             when (menuItem.itemId) {
                 R.id.chooseDocumentButton -> {
-                    Log.i("Themis", "Event 6: click \"Choose Document\" Button in the drawer")
+//                    Log.i("Themis", "Event 6: click \"Choose Document\" Button in the drawer")
                     val intent = Intent(callingActivity, ChooseDocument::class.java)
                     callingActivity.startActivityForResult(intent, ActivityBase.STD_REQUEST_CODE)
                 }
@@ -131,7 +131,7 @@ constructor(private val callingActivity: MainBibleActivity,
                     menuHelper.show()
                 }
                 R.id.searchButton -> {
-                    Log.i("Themis", "Event 9: click \"Find\" Button in the drawer")
+                    Log.i("Themis", "Event 8: click \"Find\" Button in the drawer")
                     handlerIntent = searchControl.getSearchIntent(activeWindowPageManagerProvider.activeWindowPageManager.currentPage.currentDocument)
                 }
                 R.id.settingsButton -> {
