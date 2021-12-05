@@ -460,7 +460,7 @@ class MainBibleActivity : CustomTitlebarActivityBase(), VerseActionModeMediator.
                     super.onBackPressed()
                 }
             } else {
-                Log.i("Themis", "Event 7: click \"Back\" to save note")
+//                Log.i("Themis", "Event 7: click \"Back\" to save note")
                 this.lastBackPressed = null
             }
         }

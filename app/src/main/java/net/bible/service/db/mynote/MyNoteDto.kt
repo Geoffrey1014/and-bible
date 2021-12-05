@@ -56,6 +56,7 @@ class MyNoteDto : ConvertibleVerseRangeUser {
         try{
             result = convertibleVerseRange!!.getVerseRange(versification)
         }catch (e : KotlinNullPointerException){
+            Log.i("Themis", "Event 8: Edit a problematic note that should has text but not")
             Log.i("Themis", "Crash！ : KotlinNullPointerException")
             throw e
         }
