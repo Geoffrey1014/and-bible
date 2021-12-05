@@ -75,6 +75,8 @@ class SearchIndex : CustomTitlebarActivityBase() {
 
     fun onCancel(v: View){
         finish()
+        Log.i("Themis", "Warning 8: CANCEL to Search Index")
+
     }
 
     /** Indexing is very slow
@@ -82,7 +84,7 @@ class SearchIndex : CustomTitlebarActivityBase() {
      * @param v
      */
     fun onIndex(v: View) {
-        Log.i("Themis", "Event 8: click CREATE")
+        Log.i("Themis", "Event 8: click CREATE to Search Index")
         Log.i(TAG, "CLICKED")
         try {
             // start background thread to create index

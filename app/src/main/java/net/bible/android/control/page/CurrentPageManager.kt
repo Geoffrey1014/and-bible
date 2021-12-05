@@ -155,6 +155,7 @@ open class CurrentPageManager @Inject constructor(
      * @param verseRange VerseRange to add note to, start verse is the significant key searched for but range is stored
      */
     fun showMyNote(verseRange: Key) {
+        Log.i("Themis", "Event 5: Enter a editing note view")
         setCurrentDocumentAndKey(currentMyNotePage.currentDocument, verseRange)
     }
 

@@ -104,6 +104,7 @@ class MyNoteControl @Inject constructor(val activeWindowPageManagerProvider: Act
      */
     private fun saveMyNote(myNoteDto: MyNoteDto): Boolean {
         Log.d(TAG, "saveMyNote started...")
+//        Log.i("Themis", "Event 6: Back from editing a note")
         var isSaved = false
         if (myNoteDto.isNew) {
             if (!myNoteDto.isEmpty) {

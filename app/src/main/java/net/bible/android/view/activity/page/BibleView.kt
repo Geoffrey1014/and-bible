@@ -318,6 +318,7 @@ class BibleView(val mainBibleActivity: MainBibleActivity,
             finalHtml = finalHtml.replace("INITIALIZE_SETTINGS", settingsString)
             lastestHtml = finalHtml
         }
+        Log.i("Themis", "Event 6: Enter a bible view")
         if(!updateOngoing) {
             loadHtml()
         } else {
@@ -641,7 +642,7 @@ class BibleView(val mainBibleActivity: MainBibleActivity,
 
         override fun onLongClick(v: View): Boolean {
             Log.d(TAG, "onLongClickListener")
-            Log.i("Themis", "Event 5: longPress chapterVerse")
+//            Log.i("Themis", "Event 5: longPress chapterVerse")
             val result = hitTestResult
             return if (result.type == HitTestResult.SRC_ANCHOR_TYPE) {
                 setContextMenuInfo(result.extra!!)
