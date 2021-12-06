@@ -14,38 +14,38 @@ def getGitHash = { ->
     return stdout.toString().trim()
 }
 
-task npmUpgrade(type: Exec) {
-    inputs.file "bibleview-js/package.json"
-    outputs.file "bibleview-js/node_modules/.bin/npm"
-    workingDir "bibleview-js"
-    // Workaround for F-droid, which has buggy npm version 5.8, that always fails when installing packages.
-    commandLine "npx", "npm@latest", "install", "--save-dev", "npm@latest"
-}
-
-task npmInstall(type: Exec, dependsOn: npmUpgrade) {
-    inputs.file "bibleview-js/package.json"
-    outputs.dir "bibleview-js/node_modules"
-
-    workingDir "bibleview-js"
-    commandLine "node_modules/.bin/npm", "install"
-}
-
-task webpack(type: Exec, dependsOn: npmInstall) {
-    inputs.file "bibleview-js/package.json"
-    inputs.dir "bibleview-js/src"
-    inputs.file "bibleview-js/webpack.config.js"
-    outputs.file "bibleview-js/dist/loader.js"
-
-    workingDir "bibleview-js"
-    commandLine "node_modules/.bin/webpack"
-}
-
-task buildLoaderJs(type: Copy, dependsOn: webpack) {
-    from("bibleview-js/dist/loader.js")
-    into("src/main/assets/web")
-}
-
-preBuild.dependsOn buildLoaderJs
+//task npmUpgrade(type: Exec) {
+//    inputs.file "bibleview-js/package.json"
+//    outputs.file "bibleview-js/node_modules/.bin/npm"
+//    workingDir "bibleview-js"
+//    // Workaround for F-droid, which has buggy npm version 5.8, that always fails when installing packages.
+//    commandLine "npx", "npm@latest", "install", "--save-dev", "npm@latest"
+//}
+//
+//task npmInstall(type: Exec, dependsOn: npmUpgrade) {
+//    inputs.file "bibleview-js/package.json"
+//    outputs.dir "bibleview-js/node_modules"
+//
+//    workingDir "bibleview-js"
+//    commandLine "node_modules/.bin/npm", "install"
+//}
+//
+//task webpack(type: Exec, dependsOn: npmInstall) {
+//    inputs.file "bibleview-js/package.json"
+//    inputs.dir "bibleview-js/src"
+//    inputs.file "bibleview-js/webpack.config.js"
+//    outputs.file "bibleview-js/dist/loader.js"
+//
+//    workingDir "bibleview-js"
+//    commandLine "node_modules/.bin/webpack"
+//}
+//
+//task buildLoaderJs(type: Copy, dependsOn: webpack) {
+//    from("bibleview-js/dist/loader.js")
+//    into("src/main/assets/web")
+//}
+//
+//preBuild.dependsOn buildLoaderJs
 
 
 android {

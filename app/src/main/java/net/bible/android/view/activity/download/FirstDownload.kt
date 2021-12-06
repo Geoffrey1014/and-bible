@@ -61,7 +61,7 @@ class FirstDownload : DownloadActivity() {
     }
 
     fun onOkay(v: View?) {
-        Log.i("Themis", "Event 4: click \"OK\" in \"Download Documents\" after downloading")
+        Log.i("Themis", "Event 4: Click \"OK\" in \"Download Documents\" after downloading")
         val resultIntent = Intent(this, FirstDownload::class.java)
         setResult(DOWNLOAD_FINISH, resultIntent)
         finish()
