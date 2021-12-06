@@ -56,7 +56,7 @@ public class LabelDialogs {
 
 	public void editLabel(Context context, final LabelDto label, final Callback onCreateCallback) {
 		if (label.getName().equals("")){
-			Log.i("Themis", "Event 11: edit a empty label");
+			Log.i("Themis", "Event 11: Edit a empty label");
 		}
 		showDialog(context, R.string.edit, label, onCreateCallback);
 	}
@@ -101,7 +101,7 @@ public class LabelDialogs {
 
 		alert.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
-				Log.i("Themis", "Warning 6: cancel to create or edit a label ");
+				Log.i("Themis", "Warning 6: Cancel to create or edit a label ");
 				// Canceled.
 			}
 		});

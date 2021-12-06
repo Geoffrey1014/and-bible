@@ -199,7 +199,7 @@ public class Download extends DocumentSelectionBase {
     	try {
 			// the download happens in another thread
 			downloadControl.downloadDocument(document);
-			Log.i("Themis", "Event 2: download a book: "+ document.getAbbreviation());
+			Log.i("Themis", "Event 2: Download a book: "+ document.getAbbreviation());
 			// update screen so the icon to the left of the book changes
 			notifyDataSetChanged();
 

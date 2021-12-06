@@ -64,7 +64,7 @@ public class ManageLabels extends ListActivityBase {
 		super.buildActivityComponent().inject(this);
 
         initialiseView();
-		Log.i("Themis", "Event 4: go into \"Manage Bookmark Labels\" layout");
+		Log.i("Themis", "Event 4: Enter \"Manage Bookmark Labels\" view");
 
 	}
 
