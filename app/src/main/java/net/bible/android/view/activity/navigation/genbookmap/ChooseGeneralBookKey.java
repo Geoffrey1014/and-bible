@@ -49,7 +49,7 @@ public class ChooseGeneralBookKey extends ChooseKeyBase {
     protected void itemSelected(Key key) {
     	try {
     		getCurrentGeneralBookPage().setKey(key);
-			Log.i("Themis", "Event 7: choose a general book key: " + key.getName());
+			Log.i("Themis", "Event 7: Choose a general book key: " + key.getName());
     	} catch (Exception e) {
     		Log.e(TAG, "error on select of gen book key", e);
     	}

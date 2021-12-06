@@ -137,14 +137,14 @@ public class StartupActivity extends CustomTitlebarActivityBase {
 				.setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						doGotoDownloadActivity();
-						Log.i("Themis", "Event 1: click \"OK\" in the \"Download a Bible from the Internet\" dialog at StartupActivity");
+						Log.i("Themis", "Event 1: Click \"OK\" in the \"Download a Bible from the Internet\" dialog at StartupActivity");
 
 					}
 				})
 				.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						StartupActivity.this.finish();
-						Log.i("Themis", "Warning 1: click \"Cancel\" in the \"Download a Bible from the Internet\" dialog at StartupActivity");
+						Log.i("Themis", "Warning 1: Click \"Cancel\" in the \"Download a Bible from the Internet\" dialog at StartupActivity");
 						// ensure app exits to force Sword to reload or if a sdcard/jsword folder is created it may not be recognised
 						System.exit(2);
 					}

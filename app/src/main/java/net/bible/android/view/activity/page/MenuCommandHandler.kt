@@ -131,7 +131,7 @@ constructor(private val callingActivity: MainBibleActivity,
                     menuHelper.show()
                 }
                 R.id.searchButton -> {
-                    Log.i("Themis", "Event 8: click \"Find\" Button in the drawer")
+//                    Log.i("Themis", "Event 8: click \"Find\" Button in the drawer")
                     handlerIntent = searchControl.getSearchIntent(activeWindowPageManagerProvider.activeWindowPageManager.currentPage.currentDocument)
                 }
                 R.id.settingsButton -> {

@@ -71,6 +71,8 @@ class SearchIndex : CustomTitlebarActivityBase() {
         buildActivityComponent().inject(this)
 
         Log.d(TAG, "Finished displaying Search Index view")
+        Log.i("Themis", "Event 8: Go into SearchIndex view")
+
     }
 
     /** Download the index from the sam place that Pocket Sword uses
@@ -94,7 +96,7 @@ class SearchIndex : CustomTitlebarActivityBase() {
      * @param v
      */
     fun onIndex(v: View) {
-        Log.i("Themis", "Event 9:click \"CREATE\" in \"Search Ondex\"")
+        Log.i("Themis", "Event 9: Click \"CREATE\" in \"Search Index\"")
         Log.i(TAG, "CLICKED")
         try {
             // start background thread to create index
