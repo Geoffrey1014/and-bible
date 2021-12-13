@@ -102,18 +102,18 @@ open class DownloadActivity : DocumentSelectionBase(NO_OPTIONS_MENU, R.menu.down
                     .setMessage(getString(R.string.download_question_message))
                     .setPositiveButton(R.string.yes) {
                             _, _ -> it.resume(true)
-                        Log.i("Themis", "Event 2: click \"Yes\" in \"Do you want to proceed to download documents?\" dialog")
+                        Log.i("Themis", "Event 2: Click \"Yes\" in \"Do you want to proceed to download documents?\" dialog")
 
                     }
                     .setNegativeButton(R.string.do_not_ask_again) {_, _ ->
                         sharedPreferences.edit().putBoolean("download_do_not_ask", true).apply()
                         it.resume(true)
-                        Log.i("Themis", "Event 2: click \"download_do_not_ask\" in \"Do you want to proceed to download documents?\" dialog")
+                        Log.i("Themis", "Event 2: Click \"download_do_not_ask\" in \"Do you want to proceed to download documents?\" dialog")
 
                     }
                     .setNeutralButton(R.string.cancel) {
                             _, _ -> it.resume(false)
-                        Log.i("Themis", "Warning 2: click \"Cancel\" in \"Do you want to proceed to download documents?\" dialog")
+                        Log.i("Themis", "Warning 2: Click \"Cancel\" in \"Do you want to proceed to download documents?\" dialog")
 
                     }
                     .show()
@@ -252,7 +252,7 @@ open class DownloadActivity : DocumentSelectionBase(NO_OPTIONS_MENU, R.menu.down
             Log.e(TAG, "Error on attempt to download", e)
             Toast.makeText(this, R.string.error_downloading, Toast.LENGTH_SHORT).show()
         }
-        Log.i("Themis", "Event 3: download a book: "+document.abbreviation)
+        Log.i("Themis", "Event 3: Download a book: "+document.abbreviation)
     }
 
     @SuppressLint("MissingSuperCall")
