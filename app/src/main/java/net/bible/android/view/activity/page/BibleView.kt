@@ -318,7 +318,7 @@ class BibleView(val mainBibleActivity: MainBibleActivity,
             finalHtml = finalHtml.replace("INITIALIZE_SETTINGS", settingsString)
             lastestHtml = finalHtml
         }
-        Log.i("Themis", "Event 6: Enter a bible view")
+        Log.i("Themis", "Event 5: Entered a bible view")
         if(!updateOngoing) {
             loadHtml()
         } else {

@@ -75,7 +75,7 @@ class SearchIndex : CustomTitlebarActivityBase() {
 
     fun onCancel(v: View){
         finish()
-        Log.i("Themis", "Warning 8: Click \"CANCEL\" to Search Index")
+        Log.i("Themis", "Warning 7: Clicked \"CANCEL\" to Search Index")
 
     }
 
@@ -84,7 +84,7 @@ class SearchIndex : CustomTitlebarActivityBase() {
      * @param v
      */
     fun onIndex(v: View) {
-        Log.i("Themis", "Event 8: Click \"CREATE\" to Search Index")
+        Log.i("Themis", "Event 7: Clicked \"CREATE\" to Search Index")
         Log.i(TAG, "CLICKED")
         try {
             // start background thread to create index
