@@ -370,16 +370,16 @@ class MainBibleActivity : CustomTitlebarActivityBase(), VerseActionModeMediator.
         }
         searchButton.setOnClickListener { startActivityForResult(searchControl.getSearchIntent(documentControl.currentDocument), ActivityBase.STD_REQUEST_CODE) }
         bibleButton.setOnClickListener {
-            Log.i("Themis", "Event 5:  set Current Document to a new bible: "+documentControl.suggestedBible)
+            Log.i("Themis", "Event 4: Set Current Document to a new bible: "+documentControl.suggestedBible)
             setCurrentDocument(documentControl.suggestedBible)
         }
         commentaryButton.setOnClickListener {
-            Log.i("Themis", "Event 5:  set Current Document to a new commentary: "+documentControl.suggestedCommentary)
+            Log.i("Themis", "Event 4: Set Current Document to a new commentary: "+documentControl.suggestedCommentary)
             setCurrentDocument(documentControl.suggestedCommentary)
         }
         bookmarkButton.setOnClickListener { startActivity(Intent(this, Bookmarks::class.java)) }
         dictionaryButton.setOnClickListener {
-            Log.i("Themis", "Event 5:  set Current Document to a new dictionary: "+documentControl.suggestedDictionary)
+            Log.i("Themis", "Event 4:  Set Current Document to a new dictionary: "+documentControl.suggestedDictionary)
             setCurrentDocument(documentControl.suggestedDictionary) }
     }
 
@@ -542,7 +542,7 @@ class MainBibleActivity : CustomTitlebarActivityBase(), VerseActionModeMediator.
     }
 
     private fun newTab() {
-        Log.i("Themis", "Event 4: click \"New Tab\" in menu \"Tabs\"")
+        Log.i("Themis", "Event 3: Clicked \"New Tab\" in menu \"Tabs\"")
         val currentDocument = windowControl.activeWindowPageManager.currentPassageDocument
 
         val t = tabStrings
@@ -611,13 +611,13 @@ class MainBibleActivity : CustomTitlebarActivityBase(), VerseActionModeMediator.
 //                        Log.i("Themis", "chooseTab: " + pageManager.currentPage.singleKey.name)
                     }
 
-                    Log.i("Themis", "Event 8: choose a tab to open: " + pageManager.currentPage.currentDocument + " "+pageManager.currentPage.singleKey.name)
+                    Log.i("Themis", "Event 7: Chosen a tab to open: " + pageManager.currentPage.currentDocument + " "+pageManager.currentPage.singleKey.name)
                     currentTab = which
                     try{
                         openTab(tabs[which])
                     }
                     catch (e : TypeCastException){
-                        Log.i("Themis", "Event 9: open a tab that file is deleted")
+                        Log.i("Themis", "Event 8: Opened a tab that file is deleted")
                         Log.i("Themis", "Crash!: TypeCastException")
                         throw e
                     }

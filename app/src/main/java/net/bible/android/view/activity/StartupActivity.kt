@@ -115,11 +115,11 @@ open class StartupActivity : CustomTitlebarActivityBase() {
                 .setCancelable(false)
                 .setPositiveButton(R.string.okay) {
                         dialog, id -> doGotoDownloadActivity()
-                    Log.i("Themis", "Event 1: click \"OK\" in the \"Download a Bible from the Internet\" dialog at StartupActivity")
+                    Log.i("Themis", "Event 1: Clicked \"OK\" in the \"Download a Bible from the Internet\" dialog at StartupActivity")
                 }
                 .setNegativeButton(R.string.cancel) { dialog, id ->
                     this@StartupActivity.finish()
-                    Log.i("Themis", "Warning 1: click \"Cancel\" in the \"Download a Bible from the Internet\" dialog at StartupActivity")
+                    Log.i("Themis", "Warning 1: Clicked \"Cancel\" in the \"Download a Bible from the Internet\" dialog at StartupActivity")
                     // ensure app exits to force Sword to reload or if a sdcard/jsword folder is created it may not be recognised
                     System.exit(2)
                 }.create().show()

@@ -418,7 +418,7 @@ abstract public class DocumentSelectionBase extends ListActivityBase implements 
 											documentControl.deleteDocument(document);
 											// the doc list should now change
 											reloadDocuments();
-											Log.i("Themis", "Event 7: " + "deleted a document: " + document);
+											Log.i("Themis", "Event 6: " + "Deleted a document: " + document);
 
 										} catch (Exception e) {
 											Dialogs.getInstance().showErrorMsg(R.string.error_occurred, e);

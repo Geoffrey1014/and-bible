@@ -71,7 +71,7 @@ public class ChooseDocument extends DocumentSelectionBase {
 		populateMasterDocumentList(false);
 
 		Log.i(TAG, "ChooseDocument downloadControl:"+downloadControl);
-		Log.i("Themis", "Event 6: go to \"Choose Document\"");
+		Log.i("Themis", "Event 5: Entered \"Choose Document\" view");
 
 	}
 
