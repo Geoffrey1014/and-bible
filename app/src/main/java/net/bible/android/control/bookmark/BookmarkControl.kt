@@ -315,18 +315,18 @@ open class BookmarkControl @Inject constructor(
         return try {
             if (label.id == null) {
                 if (label.name.equals("")) {
-                    Log.i("Themis", "Event 6: Create a label with no name");
+                    Log.i("Themis", "Event 5: Create a unnamed label");
 
                 } else {
-                    Log.i("Themis", "Event 5: Create a label named: \"" + label.name + "\"");
+                    Log.i("Themis", "Event 4: Create a label named: \"" + label.name + "\"");
 
                 }
                 db.insertLabel(label)
             } else {
                 if (label.name.equals("")) {
-                    Log.i("Themis", "Event 8: Edit a named label to unnamed");
+                    Log.i("Themis", "Event 7: Edit a named label to unnamed");
                 } else {
-                    Log.i("Themis", "Event 7: Edit a named label to: \"" + label.name + "\"");
+                    Log.i("Themis", "Event 6: Edit a named label to: \"" + label.name + "\"");
                 }
 
                 db.updateLabel(label)
@@ -350,18 +350,18 @@ open class BookmarkControl @Inject constructor(
 
             if (label.name.equals("")) {
                 if (haveUnNamedLables(db)){
-                    Log.i("Themis", "Event 10: Delete a unnamed label")
+                    Log.i("Themis", "Event 9: Delete a unnamed label")
                 }
                 else{
-                    Log.i("Themis", "Event 12: Delete the last unnamed label")
+                    Log.i("Themis", "Event 11: Delete the last unnamed label")
                 }
 
             } else {
                 if (haveNamedLables(db)){
-                    Log.i("Themis", "Event 9: Delete a named label: \"" + label.name + "\"")
+                    Log.i("Themis", "Event 8: Delete a named label: \"" + label.name + "\"")
                 }
                 else{
-                    Log.i("Themis", "Event 13: Delete the last named label: \"" + label.name + "\"")
+                    Log.i("Themis", "Event 12: Delete the last named label: \"" + label.name + "\"")
                 }
             }
 

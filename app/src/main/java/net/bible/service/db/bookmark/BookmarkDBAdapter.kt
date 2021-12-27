@@ -109,7 +109,7 @@ class BookmarkDBAdapter {
         val newId = db.update(BookmarkDatabaseDefinition.Table.LABEL, CONFLICT_FAIL, newValues, "_id=?", arrayOf(label.id.toString())).toLong()
         val label = getLabelDto(newId)
         if(label == null){
-            Log.i("Themis", " Crash: KotlinNullPointerException")
+            Log.i("Themis", " Crash!: KotlinNullPointerException")
         }
         return label!!
     }
