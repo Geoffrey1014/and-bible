@@ -109,7 +109,7 @@ class MyNoteControl @Inject constructor(val activeWindowPageManagerProvider: Act
             if (!myNoteDto.isEmpty) {
                 myNoteDAO.addMyNote(myNoteDto)
                 isSaved = true
-                Log.i("Themis", "Event 7: Save a note")
+                Log.i("Themis", "Event 6: Saved a note")
             }
         } else {
             val oldNote = myNoteDAO.getMyNoteByStartVerse(myNoteDto.verseRange)

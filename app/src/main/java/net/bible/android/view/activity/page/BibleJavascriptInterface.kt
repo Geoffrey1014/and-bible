@@ -113,7 +113,7 @@ class BibleJavascriptInterface(
 
     @JavascriptInterface
     fun verseLongPress(chapterVerse: String) {
-        Log.i("Themis", "Event 5: LongPress chapterVerse")
+        Log.i("Themis", "Event 4: LongPressed chapterVerses")
         Log.d(TAG, "Verse selected event:$chapterVerse")
         verseActionModeMediator.verseLongPress(ChapterVerse.fromHtmlId(chapterVerse))
     }
