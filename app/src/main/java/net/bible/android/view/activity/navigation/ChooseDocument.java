@@ -69,7 +69,7 @@ public class ChooseDocument extends DocumentSelectionBase {
 		setListAdapter(documentItemAdapter);
 
 		populateMasterDocumentList(false);
-		Log.i("Themis", "Event 5: Go into \"Choose Document\" view");
+		Log.i("Themis", "Event 4: Entered \"Choose Document\" view");
 		Log.i("Themis", "ChooseDocument downloadControl:"+downloadControl);
     }
 
@@ -104,10 +104,10 @@ public class ChooseDocument extends DocumentSelectionBase {
     	try {
     		getDocumentControl().changeDocument(selectedBook);
     		if (selectedBook.getBookCategory().getName().equals("Generic Books")){
-				Log.i("Themis", "Event 6: Select a book: "+ selectedBook.getName());
+				Log.i("Themis", "Event 5: Selected a book: "+ selectedBook.getName());
 			}
     		else{
-				Log.i("Themis", "Event 10: Select a document (not book): "+ selectedBook.getName());
+				Log.i("Themis", "Event 9: Selected a document (not book): "+ selectedBook.getName());
 			}
 
 

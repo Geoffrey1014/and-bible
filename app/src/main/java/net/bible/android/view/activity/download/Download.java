@@ -187,26 +187,26 @@ public class Download extends DocumentSelectionBase {
 							doDownload(documentToDownload);
 							Log.i("Themis", "onClick: "+documentToDownload.getBookCategory().getName());
 							if (documentToDownload.getBookCategory().getName().equals("Biblical Texts")){
-								Log.i("Themis", "Event 2: Click \"OK\" to download a bible: " + documentToDownload.getName());
+								Log.i("Themis", "Event 2: Clicked \"OK\" to download a bible: " + documentToDownload.getName());
 							}
 							else if (documentToDownload.getBookCategory().getName().equals("Generic Books")){
-								Log.i("Themis", "Event 3: Click \"OK\" to download a book: " + documentToDownload.getName());
+								Log.i("Themis", "Event 3: Clicked \"OK\" to download a book: " + documentToDownload.getName());
 							}
 							else{
-								Log.i("Themis", "Event : Click \"OK\" to download an other doc: " + documentToDownload.getName());
+								Log.i("Themis", "Event : Clicked \"OK\" to download an other doc: " + documentToDownload.getName());
 							}
 						}
 					})
 					.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
 							if (documentToDownload.getBookCategory().getName().equals("Biblical Texts")){
-								Log.i("Themis", "Warning 2: Click \"CANCEL\" to download a bible: " + documentToDownload.getName());
+								Log.i("Themis", "Warning 2: Clicked \"CANCEL\" to download a bible: " + documentToDownload.getName());
 							}
 							else if (documentToDownload.getBookCategory().getName().equals("General Books")){
-								Log.i("Themis", "Warning 3: Click \"CANCEL\" to download a book: " + documentToDownload.getName());
+								Log.i("Themis", "Warning 3: Clicked \"CANCEL\" to download a book: " + documentToDownload.getName());
 							}
 							else{
-								Log.i("Themis", "Warning : Click \"CANCEL\" to download an other doc: " + documentToDownload.getName());
+								Log.i("Themis", "Warning : Clicked \"CANCEL\" to download an other doc: " + documentToDownload.getName());
 							}						}
 					}).create().show();
 		}

@@ -71,7 +71,7 @@ class SearchIndex : CustomTitlebarActivityBase() {
         buildActivityComponent().inject(this)
 
         Log.d(TAG, "Finished displaying Search Index view")
-        Log.i("Themis", "Event 8: Go into SearchIndex view")
+        Log.i("Themis", "Event 7: Entered SearchIndex view")
 
     }
 
@@ -96,7 +96,7 @@ class SearchIndex : CustomTitlebarActivityBase() {
      * @param v
      */
     fun onIndex(v: View) {
-        Log.i("Themis", "Event 9: Click \"CREATE\" in \"Search Index\"")
+        Log.i("Themis", "Event 8: Clicked \"CREATE\" in \"Search Index\"")
         Log.i(TAG, "CLICKED")
         try {
             // start background thread to create index
