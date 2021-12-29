@@ -319,7 +319,6 @@ open class BookmarkControl @Inject constructor(
 
                 } else {
                     Log.i("Themis", "Event 4: Create a label named: \"" + label.name + "\"");
-
                 }
                 db.insertLabel(label)
             } else {
